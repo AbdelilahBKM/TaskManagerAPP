@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-  include('./partials/header2.ejs') %>
+</head>
+<body>
+    <%- include('./partials/navbar2.ejs') %>
+    <main>
+        <div class="filter-by content-blur">
+            <h2>Filter by</h2>
+            <div class="categories">
+                <span class="filter-option">category :</span>
+                <div class="category"><a data-category="all">ALL</a></div>
+                <div class="category"><a data-category="work">Work</a></div>
+                <div class="category"><a data-category="personal">Personal</a></div>
+                <div class="category"><a data-category="shopping">Shopping</a></div>
+            </div>
+            <div class="priorities">
+                <span class="filter-option">priority :</span>
+                <div class="priority"><a data-priority="all">ALL</a></div>
+                <div class="priority"><a data-priority="high">HIGH</a></div>
+                <div class="priority"><a data-priority="medium">MEDIUM</a></div>
+                <div class="priority"><a data-priority="low">LOW</a></div>
+            </div>
+        </div>
+        <div class="add-task-btn content-blur">
+            <button class="add-task"><p>Add task</p><ion-icon name="add-circle"></ion-icon></button>
+        </div>
+        <div class="add-task-container">
+            <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+            <h2>Add task</h2>
+            <form action="/myTasks/addTask" method="post">
+                <input name="title" type="text" placeholder="Task name" required>
+                <div class="select-options">
+                    <label for="category">Category :</label>
+                    <select name="category" id="category" required>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                    </select>
+                </div>
+                <div class="select-options">
+                    <label for="priority">Priority :</label>
+                    <select name="priority" id="priority" required>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="due-date">
+                    <label for="due-date">Due date :</label>
+                    <input type="date" name="due_date" id="due-date" value="" required>
+                    <label for="due-time">at :</label>
+                    <input type="time" name="due_time" id="due-time" value="00:00" required>
+                </div>
+                <div class="note">
+                    <label for="note">notes :</label>
+                    <textarea name="note" id="note" cols="30" rows="10">add some notes here</textarea>
+                </div>
+                <div class="submit-delete">
+                    <input type="submit" value="create task">
+                    <input type="button" value="discard" id="close-btn">
+                </div>
+            </form>
+        </div>
+        <div class="tasks content-blur">
+            <% if(tasks.length != 0) {%>
+            <div class="overdue-tasks">
+                <h2>Overdue tasks :</h2>
+                
+            </div>
+            <div class="today-tasks">
+                <h2>Today's tasks :</h2>
+                
+            </div>
+            <%} else {%>
+                <div class="no-tasks">
+                    <h2>looks like you don't have any tasks to do</h2>
+                    <p>lucky you!</p>
+                    <p>click on Add task to get started</p>
+                </div>
+            <%} %>
+        </div>
+        
+    </main>
+    <!-- style javascript -->
+    <script src="/js/source2.js"></script>
+    <!-- function javascript -->
+    <script src="/js/source4.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

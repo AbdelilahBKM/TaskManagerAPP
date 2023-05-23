@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 99;
+
+}
+
+.LOGO {
+    font-size: 2em;
+    user-select: none;
+    color: #fff;
+}
+.navigation a {
+    position: relative;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: all .4s ease 0s;
+}
+.navigation a:hover::after{
+    transform: scaleX(1);
+}
+body {
+    min-height: 100vh;
+    /* background-color: #ADD8E6;
+    backdrop-filter: blur(20px); */
+    /* background: #7CB9E8; */
+    background: url(https://r4.wallpaperflare.com/wallpaper/492/574/386/blue-gray-gradation-blur-wallpaper-309035297f06be73a81fd7764bd60468.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.navigation .btn-logout-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: all .4s ease 0s;
+}
+
+.navigation .btn-logout-popup:hover {
+    background: #fff;
+    color: #162938;
+}
+
+.content-blur.blur {
+    filter: blur(5px);
+    z-index: -99;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+main .account {
+    width: 500px;
+    height: 620px;
+    position: absolute;
+    top: 54.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(60px);
+    box-shadow: 0 0 10px rgba(179, 122, 122, 0.5);
+    font-size: 1em;
+    font-weight: 300;
+    color: #162938;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main .account form {
+    width: 100%;
+    padding: 10px 35px;
+    display: flex;
+    flex-direction: column;
+}
+main .account .icon {
+    width: 95%;
+    padding: 10px 0;
+    height: 40px;
+    font-size: 5em;
+    text-align: center;
+    color: black;
+    border-bottom: 2px solid rgba(255, 255, 255, .5);
+}
+.account form .input-field {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+    gap: 5px;
+}
+.account form .input-field-disabled {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+form .input-field label {
+    font-size: 1.4em;
+    font-weight: 400;
+}
+form .input-field input,
+.input-field-disabled input{
+    height: 30px;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid #162938;
+    outline: none;
+    font-size: 1em;
+    font-weight: 200;
+    color: #fff;
+    padding-left: 10px;
+}
+.input-field .icon-hide-show {
+    position: absolute;
+    right: 100px;
+    bottom: 47.5%;
+    font-size: 1.5em;
+    color: #162938;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.update-delete {
+    width: 100%;
+    height: 9.2em;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    gap: 35px;
+}
+.update-delete input,
+.confirm-deny input {
+    height: 45px;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all .4s ease 0s;
+    cursor: pointer;
+}
+.update-delete input[type="submit"]{
+    color: #fff;
+    background: #162938;
+}
+.update-delete input[type="submit"]:hover {
+    background: #fff;
+    color: #162938;
+}
+
+.update-delete .delete-account {
+    background: #f94449;
+    color: #fff;
+}
+
+.update-delete .delete-account:hover {
+    background: #fff;
+    color: #f94449;
+}
+
+main .confirm-logout, .confirm-delete {
+    position: absolute;
+    /* top: 30%;
+    left: 35%; */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(60px);
+    box-shadow: 0 0 10px rgba(179, 122, 122, 0.1);
+    font-size: 1em;
+    font-weight: 300;
+    color: #162938;
+    z-index: -99;
+    scale: 0;
+}
+
+.confirm-logout .confirm-deny,
+.confirm-delete .confirm-deny {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+}
+.confirm-deny input {
+    width: 120px;
+}
+.confirm-deny input[value="Confirm"]{
+    background: #162938;
+    color: #fff;
+}
+.confirm-deny input[value="Confirm"]:hover {
+    background: #fff;
+    color: #162938;
+}
+
+.confirm-deny input[value="Go back"]{
+    background: #f94449;
+    color: #fff;
+}
+.confirm-deny input[value="Go back"]:hover {
+    background: #fff;
+    color: #f94449;
+}
+.confirm-logout.active,
+.confirm-delete.active {
+    scale: 1;
+    z-index: 9;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/header3.ejs') %>
+</head>
+<body>
+    <%- include('./partials/navbar3.ejs') %>
+    <main>
+        <div class="account content-blur">
+            <ion-icon name="person" class="icon"></ion-icon>
+            <form action="/account/<%= user._id %>" method="POST">
+                <div class="input-field">
+                    <label for="username">Username :</label>
+                    <input type="text" name="username" value="<%= user.username %>">
+                </div>
+                <div class="input-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" value="<%= user.email %>">
+                </div>
+                <div class="input-field">
+                    <label for="password">New password :</label>
+                    <input type="password" name="password" 
+                        value="" id="password-input"
+                        data-type="hidden" required>
+                    <ion-icon name="eye" class="icon-hide-show"></ion-icon>
+                    
+                    <!-- <ion-icon name="eye-off"></ion-icon> -->
+                </div>
+                <div class="input-field-disabled">
+                    <label for="created-at">Created at :</label>
+                    <input type="date" value="<%=user.createdAt.split('T')[0]%>" disabled>
+                </div>
+                <div class="input-field-disabled">
+                    <label for="updated-at">Updated at :</label>
+                    <input type="date" value="<%=user.updatedAt.split('T')[0]%>" disabled>
+                </div>
+                <div class="update-delete">
+                    <a href="/update-account"><input type="submit" value="update account"></a>
+                    <input class="delete-account" type="button" value="delete account">
+                </div>
+            </form>
+        </div>
+        <div class="confirm-logout">
+            <h2>logout?</h2>
+            <div class="confirm-deny">
+                <a href="/account/logout"><input type="button" value="Confirm"></a>
+                <input class="close-btn" type="button" value="Go back">
+            </div>
+        </div>
+        <div class="confirm-delete">
+            <h2>delete account ?</h2>
+            <div class="confirm-deny">
+                <a  id="delete-account" data-doc="<%= user._id %>"><input type="button" value="Confirm"></a>
+                <input class="close-btn2" type="button" value="Go back">
+            </div>
+        </div>
+    </main>
+    <script src="/js/source3.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

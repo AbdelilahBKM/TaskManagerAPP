@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/header1.ejs') %>
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="wrapper <%= popUp %> <%= active %>">
+        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        <div class="form-box login">
+            <h2>login</h2>
+            <% if(message1) { %>
+                <span class="login-message-<%= category %>"> <%= message1 %></span>
+            <% } %>
+            <form name="loginForm" action="/submitForm" method="POST">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" placeholder="email" name="email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" placeholder="password" name="password" required>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">forgot password?</a>
+                </div>
+                <button type="submit" class="btn">login</button>
+            </form>
+            <div class="login-register">
+                <p>don't have an account? <a class="register-link">register</a></p>
+            </div>
+        </div>
+        <div class="form-box register">
+            <h2>register</h2>
+            <% if(message2) { %>
+                <span class="register-message-<%= category %>"> <%= message2 %></span>
+            <% } %>
+            <form action="/submitForm" method="POST" name="registerForm">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" placeholder="username" name="username" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" placeholder="email" name="email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" placeholder="password" name="password" required>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">I agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="btn">register</button>
+            </form>
+            <div class="login-register">
+                <p>already have an account? <a class="login-link">login</a></p>
+            </div>
+        </div>
+    </div> 
+    <div class="index-container content-blur <%= blur %>">
+        Welcome to our task manager website! We're thrilled to have you here and we hope that our app can help you stay organized and productive. Our task manager is designed to help you manage your tasks, to-do lists, and projects in a simple and efficient way. With features like task categorization, priority settings, due date tracking, and progress tracking, you'll be able to manage your workload with ease. Whether you're a busy professional, a student, or just someone looking to stay organized, our task manager can help you achieve your goals. So, what are you waiting for? Sign up now and start managing your tasks like a pro!
+    </div>
+    <script src="/js/source.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

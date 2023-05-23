@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-  include('./partials/header2.ejs') %>
+</head>
+<body>
+    <%- include('./partials/navbar2.ejs') %>
+    <main>
+        <div class="add-task-container active">
+            <form action="/myTasks/<%= Task._id %>" method="post">
+                <input type="text" placeholder="<%= Task.title%>" disabled>
+                <div class="select-options">
+                    <label for="category">Category :</label>
+                    <select name="category" id="category" disabled>
+                        <% if(Task.category == 'work') {%>
+                            <option value="work" selected>Work</option>
+                        <%} else {%>
+                            <option value="work">Work</option>
+                        <% } %>
+                        <% if(Task.category == 'personal') {%>
+                            <option value="personal" selected>Personal</option>
+                        <%} else {%>
+                            <option value="personal">Personal</option>
+                        <% } %>
+                        <% if(Task.category == 'shopping') {%>
+                            <option value="shopping" selected>Shopping</option>
+                        <%} else {%>
+                            <option value="shopping">Shopping</option>
+                        <% } %>
+                        
+                    </select>
+                </div>
+                <div class="select-options">
+                    <label for="priority">Priority :</label>
+                    <select name="priority" id="priority" disabled>
+                        <% if(Task.priority == 'high') {%>
+                            <option value="high" selected>High</option>
+                        <%} else {%>
+                            <option value="high">High</option>
+                        <% } %>
+                        <% if(Task.priority == 'medium') {%>
+                            <option value="medium" selected>Medium</option>
+                        <%} else {%>
+                            <option value="medium">Medium</option>
+                        <% } %>
+                        <% if(Task.priority == 'low') {%>
+                            <option value="low" selected>Low</option>
+                        <%} else {%>
+                            <option value="low">Low</option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="due-date">
+                    <label for="due-date">reschedule to:</label>
+                    <input type="date" name="due_date" id="due-date" value="" required>
+                    <label for="due-time">at :</label>
+                    <input type="time" name="due_time" id="due-time" value="00:00" required>
+                </div>
+                <div class="note">
+                    <label for="note">notes :</label>
+                    <textarea name="note" id="note" cols="30" rows="10" disabled><%= Task.note %></textarea>
+                </div>
+                <div class="submit-delete">
+                    <input type="submit" value="Update task">
+                    <input type="button" value="remove" id="remove-btn">
+                </div>
+            </form>
+        </div>
+    </main>
+    <script>
+        const remove = document.querySelector('#remove-btn');
+        const task_id = '<%= Task.id %>';
+        const endPoint = '/myTasks/doneTask/' + task_id;
+        remove.addEventListener('click', () => {
+            fetch(endPoint, {
+                method: 'DELETE'
+            }).then((response) => response.json()).then((data) => {
+                window.location.href = data.redirect;
+            }).catch(err => console.log(err));
+        });
+    </script>
+</body>
+</html>
