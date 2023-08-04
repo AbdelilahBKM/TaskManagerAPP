@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // =========================================> CONNECT TO THE DATABASE <=========================================
-const DB_URI = 'mongodb+srv://admin:cfzFDeZ9o5LB05aN@clustertask.oix6faq.mongodb.net/task-manager?retryWrites=true&w=majority';
+const DB_URI = process.env.DATABASE_URL;
 
 mongoose.connect(DB_URI).then((result) => {
     app.listen(4000);
